@@ -1,8 +1,35 @@
 ES6 and SASS Starter Kit to build  javascript ES6/SASS project runnable on any browser
 ======================================================================================
+## Description
+The purpose of this package is to set up a development environment that supports es6 (es2015) and the sass preprocessor.
+Installing this package in your project adds a basic configuration and allows you to focus on development.
+The structure of the generated project is as follows:
+```
+ your_project/
+ |_ node_modules/    # node modules folder
+ |_ src/
+ |     |_ js /    # Put here your es6 js files, you can create subfolders
+ |     |     |_ main.js
+ |     |_ scss /  # Put here your scss files, you can create subfolders
+ |_ dist/
+ |     |_ js /    # generated es5 file
+ |     |     |_ main.js
+ |     |     |_ main.min.js
+ |     |_ css /  # generated css file
+ |            |_ main.css
+ |            |_ main.css.map
+ |_ .es6-sass-sk    # configuration file
+ |_ .eslintrc       # eslint configuration file
+ |_ index.html      #
+ |_ package.json    # you should create it before installing this package.
+                    # usage : npm init
 
+```
 ## 1 - Install
 ```{r, engine='bash', count_lines}
+mkdir your_project
+cd your_project
+npm init            # to create a npm config file
 npm install --save-dev es6-sass-sk
 ```
 ## 2 - package.json scripts
