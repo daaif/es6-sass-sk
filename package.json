@@ -1,0 +1,54 @@
+{
+  "name": "es6-sass-sk",
+  "version": "2.0.0",
+  "description": "ES6 and SASS Starter Kit to build  javascript ES6/SASS project runnable on any browser",
+  "main": "main.js",
+  "bin": {
+    "es6-sass": "make"
+  },
+  "scripts": {
+    "postinstall": "es6-sass init"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/daaif/es6-sass-sk.git"
+  },
+  "keywords": [
+    "javascript",
+    "bootstrap",
+    "boilerplate",
+    "es6",
+    "es2015",
+    "babel",
+    "sass",
+    "node-sass",
+    "starter kit"
+  ],
+  "dependencies": {
+    "babel-core": "^6.14.0",
+    "babel-plugin-transform-es2015-modules-umd": "^6.12.0",
+    "babel-preset-es2015": "^6.14.0",
+    "chai": "^3.5.0",
+    "chokidar": "^1.6.0",
+    "eslint": "^3.5.0",
+    "fs-extra": "^1.0.0",
+    "karma": "^1.3.0",
+    "karma-babel-preprocessor": "^6.0.1",
+    "karma-coverage": "^1.1.1",
+    "karma-mocha": "^1.1.1",
+    "karma-phantomjs-launcher": "^1.0.2",
+    "karma-sauce-launcher": "^1.0.0",
+    "mkdirp": "^0.5.1",
+    "mocha": "^3.0.2",
+    "node-sass": "^3.13.0",
+    "phantomjs-prebuilt": "^2.1.12",
+    "rollup": "^0.36.2",
+    "serve": "^1.4.0",
+    "sinon": "^1.17.5",
+    "sinon-chai": "^2.8.0",
+    "uglify-js": "^2.7.3"
+  },
+  "author": "Aziz DAAIF (http://www.daaif.net/)",
+  "license": "MIT",
+  "homepage": "https://github.com/daaif/es6-sass-sk"
+}
