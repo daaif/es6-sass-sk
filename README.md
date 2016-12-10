@@ -61,11 +61,11 @@ module.exports  = {
      */
     library: 'main',
     /**
-     * ES6 source folder. A subfolders are scanned
+     * ES6 source folder. All subfolders are scanned
      */
     jsBasePath: './src/js',
     /**
-     * SASS source folder. A subfolders are scanned
+     * SASS source folder. All subfolders are scanned
      */
     scssBasePath: './src/scss',
     /**
