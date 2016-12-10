@@ -2,63 +2,45 @@
 
 'use strict'
 
-//global.library = 'main'
-
-/**
- * Each task required (except watch) returns a promise so you will be able to chain them as you prefer
- */
-
-
 let command = process.argv[2],
     utils   = require('./tasks/_utils');
+    if(command === 'init'){
+        let init   = require('./tasks/init')
+        init()
+    } else {
+        let eslint = require('./tasks/eslint'),
+            build = require('./tasks/build'),
+            sass = require('./tasks/sass'),
+            watch = require('./tasks/watch'),
+            minify = require('./tasks/minify')
+        switch(command) {
+            case 'init':
 
-switch(command) {
-  case 'init':
-    let init   = require('./tasks/init')
-    init()
-    break
-  case 'serve':
-    let serve   = require('./tasks/serve')
-    serve()
-    break
-  case 'eslint':
-    let eslint  = require('./tasks/eslint')
-    eslint()
-    break
-  case 'build':
-    let build   = require('./tasks/build')
-    build()
-    break
-  case 'sass':
-    let sass  = require('./tasks/sass')
-    sass()
-    break
-  case 'watch':
-    let watch   = require('./tasks/watch')
-    watch()
-    break
-  case 'minify':
-    let  minify  = require('./tasks/minify')
-    minify()
-    break
-  case 'test':
-    let test    = require('./tasks/test')
-    test()
-    break
-  case 'saucelabs':
-    test({
-      saucelabs: true
-    })
-    break
-  default:
-      eslint()
-      .then(build)
-      .then(sass)
-      .then(minify)
-      .then(test)
-      .then(function(){
-        utils.print('Project successfully compiled!', 'confirm')
-      })
-
-}
+                break
+            case 'eslint':
+                eslint()
+                break
+            case 'build':
+                build()
+                break
+            case 'sass':
+                sass()
+                break
+            case 'watch':
+                watch()
+                break
+            case 'minify':
+                minify()
+                sass('compressed')
+                break
+            default:
+                //eslint()
+                build()
+                    .then(sass)
+                    .then(minify)
+                    .then(function () {
+                        utils.print('ES6 and SASS successfully compiled!', 'confirm')
+                    })
+        }
+    }
 

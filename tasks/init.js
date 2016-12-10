@@ -3,7 +3,6 @@ let fs = require('fs'),
     utils = require('./_utils'),
     path = require('path');
 module.exports = () => {
-    console.log("XYZ................. " + path.resolve())
     fse.copy("./src", "./../../src", (err) => {
         if(err){
             utils.print(err, "error")
@@ -22,14 +21,21 @@ module.exports = () => {
         if(err){
             utils.print(err, "error")
         } else {
-            utils.print("index.html folder copied successfully.", "cool")
+            utils.print("index.html file copied successfully.", "cool")
         }
     });
     fse.copy("./.es6-sass-sk.js", "./../../.es6-sass-sk.js", (err) => {
         if(err){
             utils.print(err, "error")
         } else {
-            utils.print(".es6-sass-sk.js folder copied successfully.", "cool")
+            utils.print(".es6-sass-sk.js file copied successfully.", "cool")
+        }
+    });
+    fse.copy("./.eslintrc", "./../../.eslintrc", (err) => {
+        if(err){
+            utils.print(err, "error")
+        } else {
+            utils.print(".eslintrc file copied successfully.", "cool")
         }
     });
 }

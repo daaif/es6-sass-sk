@@ -1,4 +1,4 @@
-import {Person, Employe} from './person';
+import {Person, Employe} from './person'
 
 export {
     Person,
