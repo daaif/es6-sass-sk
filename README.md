@@ -11,15 +11,18 @@ Add this lines to *scripts* field in *package.json*
 "scripts": {
     "build": "es6-sass build",
     "sass": "es6-sass sass",
-    "serve": "es6-sass serve",
+    "eslint": "es6-sass eslint",
+    "minify": "es6-sass minify",
     "watch": "es6-sass watch"
   }
 ```
 ## 3 - Usage
 ```
-npm run build   # to transpile and bundle es6
-npm run sass    # to transpile .scss files
-..
+npm run build       # transpile and bundle es6 to es5 single file
+npm run sass        # transpile .scss files to css file and generate sourceMap file
+npm run minify      # uglify and generates .min.js file and compress .css file
+npm run eslint      # parse js files and show errors according to .eslintrc config file
+npm run watch       # enable watch mode on all js an scss files
 ```
 ## 4 - Customize es6 and scss entries 
 npm installs a default *.es6-sass-sk* config file. you can change defaults.

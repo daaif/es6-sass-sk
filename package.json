@@ -1,6 +1,6 @@
 {
   "name": "es6-sass-sk",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "ES6 and SASS Starter Kit to build  javascript ES6/SASS project runnable on any browser",
   "main": "main.js",
   "bin": {
