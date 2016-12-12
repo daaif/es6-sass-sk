@@ -7,17 +7,17 @@ module.exports  = {
     /**
      * ES6 source folder. A subfolders are scanned
      */
-    jsBasePath: './src/js',
+    jsBasePath: 'src/js',
     /**
      * SASS source folder. A subfolders are scanned
      */
-    scssBasePath: './src/scss',
+    scssBasePath: 'src/scss',
     /**
      * ES5 destination folder.
      */
-    jsDest: './dist/js',
+    jsDest: 'dist/js',
     /**
      * SASS destination folder.
      */
-    cssDest: './dist/css'
+    cssDest: 'dist/css'
 };

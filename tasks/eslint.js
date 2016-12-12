@@ -1,17 +1,15 @@
-var utils = require('./_utils'),
-   esskOptions = require('./../../../.es6-sass-sk');
+var utils = require('./_utils')
 
-module.exports = function(options) {
 
-  options = utils.extend({
-    // Folders containing the files we need to check
-    folders: [
-      'src',
-      'test'
-    ]
-  }, options)
+module.exports = function(esskOptions) {
+    return function () {
 
-  // Run eslint
-  return utils.exec('./node_modules/.bin/eslint', options.folders)
+        let folders = [
+            esskOptions.jsBasePath,
+            'test'
+        ]
+        // Run eslint
+        return utils.exec('./node_modules/.bin/eslint', folders)
 
+    }
 }

@@ -2,52 +2,56 @@ var utils = require('./_utils'),
   rollup = require( 'rollup' ),
   mkdirp = require('mkdirp'),
   fs = require('fs'),
-  babel = require('babel-core'),
-  esskOptions = require('./../../../.es6-sass-sk');
-module.exports = function(options) {
+  babel = require('babel-core')
 
-  // delete the old ./dist folder
-  utils.clean(esskOptions.jsDest)
+module.exports = function(esskOptions) {
 
-  /**
-   * Create a promise based on the result of the webpack compiling script
-   */
+    return function () {
+        // delete the old ./dist folder
+        utils.clean(esskOptions.jsDest)
 
-  return new Promise(function(resolve, reject) {
+        /**
+         * Create a promise based on the result of the webpack compiling script
+         */
 
-    rollup.rollup({
-      // The bundle's starting point. This file will be
-      // included, along with the minimum necessary code
-      // from its dependencies
-      entry: `${esskOptions.jsBasePath}/${esskOptions.library}.js`
-    }).then( function ( bundle ) {
+        return new Promise(function (resolve, reject) {
 
-      // convert to valid es5 code with babel
-      var result = babel.transform(
-        // create a single bundle file
-        bundle.generate({
-          format: 'cjs'
-        }).code,
-        {
-          moduleId: esskOptions.library,
-          moduleIds: true,
-          comments: false,
-          presets: ['es2015'],
-          plugins: ['transform-es2015-modules-umd']
-        }
-      ).code
+            rollup.rollup({
+                // The bundle's starting point. This file will be
+                // included, along with the minimum necessary code
+                // from its dependencies
+                entry: `${esskOptions.jsBasePath}/${esskOptions.library}.js`
+            }).then(function (bundle) {
 
-      mkdirp(esskOptions.jsDest, function() {
-        try {
-          fs.writeFileSync(`${esskOptions.jsDest}/${ esskOptions.library }.js`, result, 'utf8')
-          resolve()
-        } catch (e) {
-            utils.print(e, 'error')
-            reject(e)
-        }
-      })
+                // convert to valid es5 code with babel
+                var result = babel.transform(
+                    // create a single bundle file
+                    bundle.generate({
+                        format: 'cjs'
+                    }).code,
+                    {
+                        moduleId: esskOptions.library,
+                        moduleIds: true,
+                        comments: false,
+                        presets: ['es2015'],
+                        plugins: ['transform-es2015-modules-umd']
+                    }
+                ).code
 
-    }).catch(e =>{ utils.print(e, 'error') })
-  })
+                mkdirp(esskOptions.jsDest, function () {
+                    try {
+                        fs.writeFileSync(`${esskOptions.jsDest}/${ esskOptions.library }.js`, result, 'utf8')
+                        resolve()
+                    } catch (e) {
+                        utils.print(e, 'error')
+                        reject(e)
+                    }
+                })
 
+            }).catch(e => {
+                utils.print(e, 'error')
+            })
+        })
+
+    }
 }
